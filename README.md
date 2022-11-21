@@ -40,13 +40,21 @@ npm run deploy:l2
 ```
 
 ## Interact with the contract on L1
-Send transaction to transfer the token on L1
+1. Set your contract address
+Set your contract address on L1(goerli) in `.env`
+
+2. Send a transaction
+Send a transaction to transfer the token on L1
 ```
 npm run transfer:l1
 ```
 
 ## Interact with the contract on L2
-Send transaction to transfer the token on L2
+1. Set your contract address
+Set your contract address on L2 in `.env`
+
+2. Send a transaction
+Send a transaction to transfer the token on L2
 ```
 npm run transfer:l2
 ```
