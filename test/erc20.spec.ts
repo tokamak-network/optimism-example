@@ -5,7 +5,7 @@ import { expect } from 'chai'
 describe('Basic ERC20 interactions', async () => {
   let user1: Wallet
   let user2: Wallet
-  let owner
+  let owner: SignerWithAddress
   let myERC20: Contract
 
   before(async () => {

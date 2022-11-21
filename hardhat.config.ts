@@ -1,27 +1,37 @@
-//import { task } from "hardhat/config";
-//import "@nomiclabs/hardhat-waffle";
-
+import { HardhatUserConfig } from "hardhat/config";
+import * as dotenv from 'dotenv'
 import '@nomiclabs/hardhat-ethers'
 import '@nomiclabs/hardhat-waffle'
-import '@eth-optimism/hardhat-ovm'
+import "@nomiclabs/hardhat-etherscan";
+import 'hardhat-deploy';
+import './tasks'
 
-export default {
+dotenv.config()
+
+const config: HardhatUserConfig = {
   mocha: {
     timeout: 20000,
   },
-  solidity: "0.7.6",
+  solidity: "0.8.0",
   networks: {
-    optimism: {
-      url: 'http://127.0.0.1:8545',
-      accounts: {
-        mnemonic: 'test test test test test test test test test test test junk'
-      },
-      // This sets the gas price to 0 for all transactions on L2. We do this
-      // because account balances are not automatically initiated with an ETH
-      // balance (yet, sorry!).
-      gasPrice: 0,
-      ovm: true // This sets the network as using the ovm and ensure contract will be compiled against that.
+    hardhat: {
+      live: false,
+      saveDeployments: false,
+    },
+    goerli: {
+      live: true,
+      chainId: 5,
+      url: `https://goerli.infura.io/v3/${process.env.INFURA_API_KEY}`,
+      accounts: [process.env.PRIVATE_KEY],
+      saveDeployments: true,
+    },
+    goerli_tokamak: {
+      chainId: 5050,
+      url: 'https://goerli.optimism.tokamak.network',
+      accounts: [process.env.PRIVATE_KEY],
+      saveDeployments: true,
     }
-  }
+  },
 };
 
+export default config;
