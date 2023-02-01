@@ -18,6 +18,11 @@ const config: HardhatUserConfig = {
       live: false,
       saveDeployments: false,
     },
+    local: {
+      live: false,
+      saveDeployments: false,
+      url: 'http://127.0.0.1:9545',
+    },
     goerli: {
       live: true,
       chainId: 5,
